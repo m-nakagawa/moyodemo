@@ -21,6 +21,7 @@ _Evlist = {}
 _Positive = -1
 
 def send_positive(cnt):
+    global _W
     print "!!!! %d" % (cnt)
     if cnt > 5:
         GPIO.output(_port[1], True)
@@ -32,7 +33,6 @@ def send_positive(cnt):
     else:
         GPIO.output(_port[2], False)
 
-    global _W
     values = {u"総計":cnt }
     #sendvalue = [['vote-10', values]]
     sendvalue = [['cnt-0', values]]
