@@ -21,7 +21,8 @@ if __name__ == '__main__':
     GPIO.setup(23,GPIO.OUT)
 
     print sys.argv
-    exit(1)
+    pt = int(sys.argv[1])
+    v  = int(sys.argv[2])
+    print pt, v
     
-    GPIO.output(_port[self.num], True)
-    GPIO.output(_port[self.num], False)
+    GPIO.output(_port[pt], v)
