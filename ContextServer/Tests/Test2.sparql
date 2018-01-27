@@ -1,0 +1,6 @@
+#日本語
+PREFIX : <http://bizar.aitc.jp/ns/spaceos/0.1/> 
+PREFIX ha: <http://bizar.aitc.jp/ns/spaceos/0.1/人間API>
+#SELECT ?url ?c
+SELECT ?a ?c
+WHERE {?a ?b ?c}

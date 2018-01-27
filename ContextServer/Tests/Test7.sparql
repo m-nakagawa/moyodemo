@@ -1,0 +1,12 @@
+# 日本語
+PREFIX : <http://people.example/>
+SELECT ?y ?name WHERE {
+  :alice :knows ?y .
+  {
+    SELECT ?y ?name WHERE {
+      ?y :name ?name
+    }
+    ORDER BY ?name
+    LIMIT 1
+  }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 日本語 -->
+<html>
+  <head>
+<!--
+    <script src="js/react-0.13.3.js"></script>
+    <script src="js/JSXTransformer-0.13.3.js"></script>
+-->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+    <script type="text/javascript">
+
+recvfunc1 = function (data) {
+    var d = JSON.parse(data);
+    console.log("!!! 1:",d)
+    $("div#w1").text(d);
+}
+recvfunc2 = function (data) {
+    var d = JSON.parse(data);
+    console.log("!!! 2:",d)
+    $("div#w2").text(d);
+}
+recvfunc3 = function (data) {
+    var d = JSON.parse(data);
+    console.log("!!! 3:",d)
+    $("div#w3").text(d);
+}
+openfunc = function (evt){
+}
+
+xx = "http://localhost:8000/openmasami/record/latest/2F/%E5%B1%85%E9%96%93/%E6%B8%A9%E5%BA%A6"
+//url = encodeURI("ws://localhost:8000/openmasami/stream/1F/居間/温度");
+url = "ws://aitc.dyndns.org/openmasami/stream/ws/subscribe/1F/居間/温度";
+//console.log("!!!", url)
+url = "ws://aitc.dyndns.org/openmasami/stream/ws/subscribe/1F/居間/温度";
+ws1 = new FOS.WebSocketCtrl(url,openfunc, recvfunc1 );
+url = "ws://aitc.dyndns.org/openmasami/stream/ws/subscribe/1F/居間/照明";
+ws2 = new FOS.WebSocketCtrl(url,openfunc, recvfunc2 );
+url = "ws://aitc.dyndns.org/openmasami/stream/ws/subscribe/2F/居間/照明";
+ws3 = new FOS.WebSocketCtrl(url,openfunc, recvfunc3 );
+    </script>
+  </head>
+  <body>
+    <h1>Test</h1>
+    <p>マウス：<div id="w1"></div></p>
+    <p>照明1F：<div id="w2"></div></p>
+    <p>照明2F：<div id="w3"></div></p>
+  </body>
+</html>

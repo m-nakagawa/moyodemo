@@ -1,0 +1,8 @@
+#日本語
+PREFIX : <http://bizar.aitc.jp/ns/fos/0.1/> 
+PREFIX ha: <http://bizar.aitc.jp/ns/fos/0.1/人間API/>
+CONSTRUCT{
+	_:msg	:処理結果	:正常 .
+}
+WHERE {
+}

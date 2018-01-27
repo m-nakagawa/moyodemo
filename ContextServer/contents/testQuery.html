@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- -->
+<html>
+<head><title>{{title}}</title></head>
+<body>
+<h1>{{title}}</h1>
+<h5>{{server}})</h5>
+
+<form method="post" action="{{action}}">
+<br/>
+Request:<br/>
+<input type="text" name="service_detail" size="80" value="{{detail}}"/></text>
+<br/>
+Params:<br/>
+
+<textarea name="query" rows="20" cols="80">{{query}}</textarea>
+<br/>
+<input type="submit" value="GET" name ="method">
+<input type="submit" value="POST" name ="method">
+<p>Answer type:
+<input type="radio" name="answer_type" value="SPARQL" checked="checked" />SPARQL
+<input type="radio" name="answer_type" value="RDF" />RDF
+</p>
+
+</form>
+<hr>URL<h3>
+<pre>
+{{url_param}}
+</pre>
+<h3>Answer</h3>
+<pre>
+{{answer}}
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+@prefix :        <http://bizar.aitc.jp/ns/spaceos/0.1/> 
+@prefix ha:      <http://bizar.aitc.jp/ns/spaceos/0.1/人間API/> 
+@prefix acc:     <http://bizar.aitc.jp/ns/spaceos/0.1/accesscontrol/>
+# My second RDF
+
+:個人機器
+	   rdf:type	rdfs:class;
+	   acc:ctrl     _:ctrl01
+	   .	   
+	   	   
+_:ctrl01
+	:電話番号	3;
+	:種別		2;
+	.
+
+_:ctrl02
+	ha:テキストメッセージ	3;
+	.
+
+_:ctrl03
+	:電話番号	1;
+	.
+
+_:r01
+	:場所	:ここ	;
+	:在室	_:p01	;
+	:在室	_:p02	;
+	:在室	_:p03	;
+	.
+_:c01
+	rdf:type	:個人機器;
+	:主人	_:p01	;
+	:電話番号	"012345678"	;
+	:種別	:携帯電話	;
+	ha:テキストメッセージ	<http://192.168.0.2/51354/ha/message/send> ;
+	ha:緊急連絡	<http://192.168.0.2/51354/ha/message/emergency> ;
+	.
+_:c02
+	rdf:type	:個人機器;
+	acc:ctrl	_:ctrl02;
+	:主人	_:p02	;
+	:種別	:PC	;
+	ha:テキストメッセージ	<http://192.168.0.2/51221/ha/message/send> ;
+	ha:緊急連絡	<http://192.168.0.2/51221/ha/message/emergency> ;
+	.
+_:c03
+	rdf:type	:個人機器;
+	acc:ctrl	_:ctrl03;
+	:主人	_:p03	;
+	:種別	:携帯電話	;
+	:電話番号	"012345999"	;
+	ha:テキストメッセージ	<http://192.168.0.2/51223/ha/message/send> ;
+	ha:緊急連絡	<http://192.168.0.2/51221/ha/message/emergency> ;
+	.
+
+_:p01
+	:最終認識	"2014-07-11T10:45:23.5+09:00"	;
+	:人物		_:np01				;
+	.
+_:p02
+	:最終認識	"2014-07-11T10:55:20.2+09:00"	;
+	.
+_:p01
+	:最終認識	"2014-07-11T10:45:23.5+09:00"	;
+	.
+_:np01
+	:通称	"中川雅三" ;
+	.

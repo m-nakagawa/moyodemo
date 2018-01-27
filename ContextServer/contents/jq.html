@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- 日本語 -->
+<html>
+  <head>
+<!--
+    <script src="js/react-0.13.3.js"></script>
+    <script src="js/JSXTransformer-0.13.3.js"></script>
+-->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+    <script type="text/javascript">
+recvfunc = function (data) {
+    $("div#wa").text(data);
+    var d = JSON.parse(data);
+    console.log("!!!",d["people_in_room_01"]), EchoWebSocket
+    $("div#wb").text(JSON.stringify(d));
+}
+
+openfunc = function (evt){
+    ws.send('{"subscribe":"people_in_room_01"}');    
+}
+//ws = new FOS.WebSocketCtrl("ws://localhost:8000/openmasami/link",
+//			   openfunc, recvfunc );
+
+recvfunc2 = function (data) {
+    $("div#wa").text(data);
+    var d = JSON.parse(data);
+    console.log("!!!",d)
+    console.log("!!!","abc")
+    $("div#wb").text(d);
+}
+openfunc2 = function (evt){
+}
+
+xx = "http://localhost:8000/openmasami/record/latest/2F/%E5%B1%85%E9%96%93/%E6%B8%A9%E5%BA%A6"
+//url = encodeURI("ws://localhost:8000/openmasami/stream/1F/居間/温度");
+url = "ws://aitc.dyndns.org/openmasami/stream/ws/subscribe/1F/居間/温度";
+console.log("!!!", url)
+ws2 = new FOS.WebSocketCtrl(url,openfunc2, recvfunc2 );
+    </script>
+  </head>
+  <body>
+    <h1>Test</h1>
+    <p><div id="wa"></div></p>
+    <p><div id="wb"></div></p>
+  </body>
+</html>

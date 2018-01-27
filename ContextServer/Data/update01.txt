@@ -1,0 +1,12 @@
+#日本語
+PREFIX : <http://bizar.aitc.jp/ns/fos/0.1/>
+DELETE{ ?c :測定値         ?data . }
+INSERT{
+    ?c :測定値          1234 .
+}
+WHERE {
+    ?c  :識別子		"人数部屋01" .
+    OPTIONAL {
+    ?c  :測定値         ?data .
+    }
+}

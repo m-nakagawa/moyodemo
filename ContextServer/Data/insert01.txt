@@ -1,0 +1,6 @@
+#日本語
+PREFIX : <http://bizar.aitc.jp/ns/fos/0.1/>
+PREFIX ha: <http://bizar.aitc.jp/ns/fos/0.1/人間API/>
+INSERT DATA {
+    _:x  :識別子          12248 .
+}

@@ -1,0 +1,9 @@
+# 日本語
+PREFIX : <http://bizar.aitc.jp/ns/spaceos/0.1/> 
+PREFIX ha: <http://bizar.aitc.jp/ns/spaceos/0.1/人間API>
+SELECT ?x
+WHERE {
+      #?c  :主人   ?p .
+      ?c  :電話番号  ?x .
+      ?c  ha:テキストメッセージ ?x
+}

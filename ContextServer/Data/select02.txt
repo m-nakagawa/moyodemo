@@ -1,0 +1,10 @@
+#日本語
+PREFIX : <http://bizar.aitc.jp/ns/fos/0.1/>
+PREFIX ha: <http://bizar.aitc.jp/ns/fos/0.1/人間API/>
+SELECT ?data ?value
+WHERE {
+    ?c  :識別子         ?data .
+    OPTIONAL{
+      ?c  :測定値 ?value .
+    }
+}

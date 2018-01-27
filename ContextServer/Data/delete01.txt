@@ -1,0 +1,8 @@
+#日本語
+PREFIX : <http://bizar.aitc.jp/ns/fos/0.1/>
+PREFIX ha: <http://bizar.aitc.jp/ns/fos/0.1/人間API/>
+DELETE{ ?c ha:テキストメッセージ ?url .}
+WHERE {
+    ?c  :識別子		1248 .
+    ?c ha:テキストメッセージ ?url .
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- -->
+<html>
+<head><title>{{title}}</title></head>
+<body>
+<h1>{{title}}</h1>
+<!--<h5>{{server}})</h5>-->
+<form method="post" action="{{action}}">
+<!--<p>Query<br><input type="textarea" rows=20 columns=80 name="query"></p>-->
+<textarea name="query" rows="20" cols="80">{{query}}</textarea>
+<br/>
+<input type="submit" value="GET" name ="method">
+<input type="submit" value="POST" name ="method">
+<p>Answer type:
+<input type="radio" name="answer_type" value="SPARQL" checked="checked" />SPARQL
+<input type="radio" name="answer_type" value="RDF" />RDF
+</p>
+<!--
+<input type="image" alt="gett" value="GET" name ="method">
+<input type="image" alt="postt" value="POST" name ="method">
+-->
+</form>
+
+<h3>Answer</h3>
+<pre>
+{{answer}}
+</pre>
+
+<h3>Modified Query</h3>
+<pre>
+{{morph_disp}}
+</pre>
+</body>
+</html>

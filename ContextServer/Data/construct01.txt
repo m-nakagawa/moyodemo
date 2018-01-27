@@ -1,0 +1,14 @@
+#日本語
+PREFIX : <http://bizar.aitc.jp/ns/fos/0.1/> 
+PREFIX ha: <http://bizar.aitc.jp/ns/fos/0.1/人間API/>
+CONSTRUCT{
+	_:msg :コマンド ha:テキストメッセージ .
+	_:msg :宛先  ?url .
+	_:msg :パラメータ "大変です" .
+}
+WHERE {
+      ?room :場所 :ここ .
+      ?room :在室 ?p .
+      ?c :主人 ?p .
+      ?c ha:テキストメッセージ ?url .
+}

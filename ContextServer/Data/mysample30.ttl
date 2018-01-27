@@ -1,0 +1,257 @@
+#-*- coding: utf-8 -*-
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+@prefix :        <http://bizar.aitc.jp/ns/fos/0.1/> 
+@prefix ha:      <http://bizar.aitc.jp/ns/fos/0.1/人間API/> 
+@prefix acc:     <http://bizar.aitc.jp/ns/fos/0.1/accesscontrol/>
+@prefix fosi:    <http://bizar.aitc.jp/ns/fos/0.1/internal/>
+@prefix lcl:     <http://bizar.aitc.jp/ns/fos/0.1/local#>
+# My second RDF
+
+:個人機器
+	   rdf:type	rdfs:class;
+	   acc:ctrl     _:ctrl01
+	   .	   
+	   	   
+_:ctrl01
+	:電話番号	3;
+	:種別		2;
+	.
+
+_:ctrl02
+	ha:テキストメッセージ	3;
+	.
+
+_:ctrl03
+	:電話番号	1;
+	.
+
+_:r01
+	:場所	:ここ	;
+	:在室	_:p01	;
+	:在室	_:p02	;
+	:在室	_:p03	;
+	.
+_:c01
+	rdf:type	:個人機器;
+	:識別子		1248 ;
+	:主人	_:p01	;
+	:電話番号	"012345678"	;
+	:種別	:携帯電話	;
+	:メールアドレス		"m-nakagawa@nssys.co.jp";
+	ha:テキストメッセージ	<http://localhost:8000/openmasami/service/mail/normal/1248> ;
+	ha:緊急連絡	<http://localhost:8000/openmasami/service/mail/emergency/1248> ;
+	.
+_:c02
+	rdf:type	:個人機器;
+	acc:ctrl	_:ctrl02;
+	:識別子		1249 ;
+	:主人	_:p02	;
+	:種別	:PC	;
+	ha:テキストメッセージ	<http://localhost:8000/openmasami/service/printlog/normal/1249> ;
+	ha:緊急連絡	<http://localhost:8000/openmasami/service/printlog/emergency/1249> ;
+	.
+_:c03
+	rdf:type	:個人機器;
+	acc:ctrl	_:ctrl03;
+	:識別子		1250 ;
+	:主人	_:p03	;
+	:種別	:携帯電話	;
+	:電話番号	"012345999"	;
+	ha:テキストメッセージ	<http://localhost:8000/openmasami/service/printlog/normal/1250> ;
+	ha:緊急連絡	<http://localhost:8000/openmasami/service/printlog/emergency/1250> ;
+	.
+
+_:p01
+	:最終認識	"2014-07-11T10:45:23.5+09:00"	;
+	:人物		_:np01				;
+	.
+_:p02
+	:最終認識	"2014-07-11T10:55:20.2+09:00"	;
+	.
+_:p01
+	:最終認識	"2014-07-11T10:45:23.5+09:00"	;
+	.
+_:np01
+	:通称	"中川雅三" ;
+	.
+#---------------------------
+
+
+
+
+
+#---------------------------
+
+
+_:x01
+	:パス識別子	lcl:1F;
+	:構成		_:x03;
+	:構成		_:x10;
+	:構成		_:y01;
+	:構成		_:y10;
+	.
+
+_:x02
+	:パス識別子	lcl:2F;
+	:構成		_:x13;
+	.
+
+_:x03
+	:パス識別子	lcl:居間;
+	:パス識別子	lcl:場所;
+	:在室		_:x04;
+	:在室		_:x06;
+	:温度		12;
+	:照明		"ON";
+	.
+
+_:x13
+	:パス識別子	lcl:居間;
+	:パス識別子	lcl:場所;
+	:在室		_:x14;
+	:温度		13;
+	:照明		"OFF";
+	.
+
+_:x08
+	:パス識別子	lcl:温度;
+	:値識別子	"temp01";
+	:値名		:温度;
+ 	:値主		_:x03;
+	:値更新		:直接;
+	.
+
+_:x09
+	:パス識別子	lcl:温度;
+	:値識別子	"temp02";
+	:値名		:温度;
+ 	:値主		_:x13;
+	:値更新		:直接;
+	.
+
+_:x28
+	:パス識別子	lcl:照明;
+	:値識別子	"light01";
+	:値名		:照明;
+ 	:値主		_:x03;
+	:値更新		:直接;
+	.
+
+_:x29
+	:パス識別子	lcl:照明;
+	:値識別子	"light02";
+	:値名		:照明;
+ 	:値主		_:x13;
+	:値更新		:直接;
+	.
+
+_:x04
+	:パス識別子	lcl:人;
+	:パス識別子	lcl:荒本;
+	:名前		"荒本";
+	:所在		_:x03;
+	.
+
+_:x05
+	:パス識別子	lcl:名前;
+	:値識別子	"name01";
+	:値名		:名前;
+ 	:値主		_:x04;
+	.
+
+_:x14
+	:パス識別子	lcl:人;
+	:名前		"吉田";
+	:所在		_:x13;
+	.
+
+_:x17
+	:パス識別子	lcl:名前;
+	:値識別子	"name03";
+	:値名		:名前;
+ 	:値主		_:x14;
+	.
+
+_:x06
+	:パス識別子	lcl:人;
+	:名前		"中川";
+	:所在		_:x03;
+	.
+
+_:x07
+	:パス識別子	lcl:名前;
+	:値識別子	"name02";
+	:値名		:名前;
+ 	:値主		_:x06;
+	.
+
+_:x10
+	:パス識別子	lcl:廊下;
+	:パス識別子	lcl:場所;
+	.
+
+_:dt01  :値識別子  "人数部屋01" .
+_:dt01  :値識別子  "people_in_room_01" .
+
+
+
+#---------------------------
+
+_:y01
+	:パス識別子	lcl:living;
+	:パス識別子	lcl:場所;
+	:温度		12;
+	:照明		"ON";
+	:people		"";
+	.
+
+_:y11
+	:パス識別子	lcl:people;
+	:値識別子	"person01";
+	:値名		:people;
+ 	:値主		_:y01;
+	.
+
+_:y02
+	:パス識別子	lcl:entrance;
+	:パス識別子	lcl:場所;
+	:温度		5;
+	:照明		"ON";
+	:people		"";
+	:visitors	"";
+	:others		"";
+	.
+_:y12
+	:パス識別子	lcl:people;
+	:値識別子	"person02";
+	:値名		:people;
+ 	:値主		_:y02;
+	.
+_:y22
+	:パス識別子	lcl:visitors;
+	:値識別子	"visitor02";
+	:値名		:visitors;
+ 	:値主		_:y02;
+	.
+
+_:y32
+	:パス識別子	lcl:others;
+	:値識別子	"other02";
+	:値名		:others;
+ 	:値主		_:y02;
+	.
+
+
+#---------------------------
+
+
+_:it01
+	fosi:コマンド    ha:テキストメッセージ ;
+        fosi:方式        fosi:SimpleRelay ;
+        fosi:pm0         :主題 ;
+        fosi:pm1	 :説明 ;
+        fosi:pm2         :完了通知 ;
+	.
+
+

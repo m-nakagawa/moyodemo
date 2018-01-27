@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- 日本語 -->
+<html>
+  <head>
+
+<!--
+    <script src="js/react-0.13.3.js"></script>
+    <script src="js/JSXTransformer-0.13.3.js"></script>
+-->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+    <link rel="stylesheet" href="http://{{rootpath}}/content/demotest.css">
+
+    <script type="text/javascript">
+
+initfunc = function() {
+    recvfunc1 = function (data) {
+        var d = JSON.parse(data);
+        console.log("!!! 1:",d)
+        $("div#w1").text(d);
+    }
+    recvfunc2 = function (data) {
+        var d = JSON.parse(data);
+        console.log("!!! 2:",d)
+        $("div#w2").text(d);
+    }
+    recvfunc3 = function (data) {
+        var d = JSON.parse(data);
+        console.log("!!! 3:",d)
+        $("div#w3").text(d);
+    }
+    recvfunc4 = function (data) {
+        var d = JSON.parse(data);
+        console.log("!!! 4:",d)
+        $("div#w4").text(d);
+    }
+    openfunc = function (evt){
+    }
+    rootpath = "{{rootpath}}"
+    console.log("!!!!!!!!!!!!!!!", rootpath)
+    //http://aitc.dyndns.org/openmasami/record/latest/living/people
+    //http://aitc.dyndns.org/openmasami/record/latest/entrance/people
+    //http://aitc.dyndns.org/openmasami/record/latest/entrance/others
+    //http://aitc.dyndns.org/openmasami/record/latest/entrance/visitors
+    
+    url1 = "ws://"+rootpath+"/stream/ws/subscribe/1F/居間/温度";
+    url2 = "ws://"+rootpath+"/stream/ws/subscribe/1F/居間/照明";
+    url3 = "ws://"+rootpath+"/stream/ws/subscribe/2F/居間/温度";
+    url4 = "ws://"+rootpath+"/stream/ws/subscribe/2F/居間/照明";
+    //url4 = "ws://"+rootpath+"/stream/ws/subscribe/living/people";
+    ws1 = new FOS.WebSocketCtrl(url1,openfunc, recvfunc1 );
+    ws2 = new FOS.WebSocketCtrl(url2,openfunc, recvfunc2 );
+    ws3 = new FOS.WebSocketCtrl(url3,openfunc, recvfunc3 );
+    ws4 = new FOS.WebSocketCtrl(url4,openfunc, recvfunc4 );
+}
+    setTimeout(initfunc, 50);
+    </script>
+  </head>
+  <body>
+    <h1>宅内状況</h1>
+    <table>
+    <tr>
+    <td><div class="item00">温度1F</div></td>
+    <td><div class="item01" id="w1"></div></td>
+    </tr>
+    <tr>
+    <td><div class="item10">照明1F</div></td>
+    <td><div class="item11" id="w2"></div></td>
+    </tr>
+<!--
+    <tr>
+    <td><div class="item00">温度2F</div></td>
+    <td><div class="item01" id="w3"></div></td>
+    </tr>
+-->
+    <tr>
+    <td><div class="item10">照明2F</div></td>
+    <td><div class="item11" id="w4"></div></td>
+    </tr>
+    </table>
+  </body>
+</html>

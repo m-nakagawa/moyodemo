@@ -1,0 +1,12 @@
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX :        <http://bizar.aitc.jp/ns/spaceos/0.1/>
+PREFIX ha:      <http://bizar.aitc.jp/ns/spaceos/0.1/人間API>
+PREFIX acc:     <http://bizar.aitc.jp/ns/spaceos/0.1/accesscontrol/>
+SELECT *
+WHERE {
+      ?m rdf:type	:個人機器.
+      ?m :何 ?w.
+      #?m :電話番号 ?tel.
+}
+LIMIT 10

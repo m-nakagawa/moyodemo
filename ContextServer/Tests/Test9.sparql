@@ -1,0 +1,16 @@
+PREFIX : <http://bizar.aitc.jp/ns/fos/0.1/>
+PREFIX  ha:  <http://bizar.aitc.jp/ns/fos/0.1/人間API/>
+SELECT  ?x ?url
+WHERE {
+  {
+    SELECT  ?url
+    WHERE  {
+      ?room  :場所  :ここ  .
+      ?room  :在室  ?p  .
+      ?c  :主人  ?p  .
+      ?c  ha:テキストメッセージ  ?url  .
+    }
+  }
+  ?a :適当 ?url .
+  ?a :種別 ?x .
+}

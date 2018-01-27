@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("div").hover(
+                    function (){
+                        $("div").css("background-color", "#FC6");
+                        $("div#12").text("def");
+                    },
+                    function (){
+                        $("div").css("background-color", "#09C");
+                        $("div#12").text("abc");
+                    }
+                );
+            });
+        </script>
+        <style type="text/css">
+        <!--
+            div{
+                width:100px;
+                margin:10px;
+                padding:5px;
+                color:#fff;
+                background-color:#09C;
+                cursor:pointer;
+            }
+        -->
+        </style>
+    </head>
+
+    <body>
+        <div>touch me.</div>
+        <div id="12">touch me.</div>
+    </body>
+</html>

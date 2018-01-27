@@ -1,0 +1,9 @@
+# 日本語
+PREFIX : <http://bizar.aitc.jp/ns/spaceos/0.1/> 
+PREFIX ha: <http://bizar.aitc.jp/ns/spaceos/0.1/人間API>
+SELECT ?x
+WHERE {
+      ?c  :電話番号  "012345678" .
+      #?c  :種別  :携帯電話 .
+      ?c  ha:テキストメッセージ ?x
+}

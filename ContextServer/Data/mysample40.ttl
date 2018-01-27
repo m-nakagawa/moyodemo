@@ -1,0 +1,61 @@
+#-*- coding: utf-8 -*-
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+@prefix :        <http://bizar.aitc.jp/ns/fos/0.1/> 
+
+_:sw01
+	a		:スイッチ;
+	:設置場所	_:place01;
+	:設置位置 [
+		:座標系 _:some	;
+		:座標 [
+			:x	1;
+			:y	2;
+			:z	3;
+			];
+		];
+	:製品情報	<https://xxxx.com/products/info/120-32353-23>;
+	:制御対象	_:lamp01;
+	:スイッチ状態 [
+	   :値 "OFF";
+	   :時刻 1450147692.581;
+	];
+	.
+
+_:lamp01
+	a		:ランプ;
+	#:設置場所	_:place01;
+	:設置位置 [
+		:座標系 _:some	;
+		:座標 [
+			:x	2;
+			:y	3;
+			:z	3;
+			];
+		];
+	:製品情報	<https://yyyy.com/zzdiv/products/info/a423553>;
+	:ランプ要求 [
+		:値	"OFF";
+		:要求時刻	1450147692.602;
+		:設定時刻	1450147692.683;
+		];
+	.
+
+
+_:place01
+	a	:居間;
+	.
+
+
+
+
+
+_:some	  a		:座標系定義
+	.
+_:place01
+	a	:居間;
+	:設置	_:sw01;
+	:設置   _:lamp01;
+	.
+
+
+

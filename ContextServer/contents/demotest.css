@@ -1,0 +1,25 @@
+h1 {
+  /*color: red; */
+  font-size:40px;
+}
+
+div.item00 {
+   background: #F8F8F8;
+   font-size:60px;
+}
+div.item01 {
+   background: #F8F8F8;
+   font-size:60px;
+   width:200px;
+   text-align: right;
+}
+div.item10 {
+   background: #E0E0E0;
+   font-size:60px;
+}
+div.item11 {
+   background: #E0E0E0;
+   font-size:60px;
+   width:200px;
+   text-align: center;
+}
