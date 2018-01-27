@@ -7,10 +7,6 @@ from tornado import ioloop
 from ws4py.client.threadedclient import WebSocketClient
 import json
 
-import RPi.GPIO as GPIO
-
-_port = {1:18, 2:23}
-
 #_Base = u"ws://localhost:3030/openmasami/"
 _Base = u"wss://aitc2.dyndns.org/openmasami/"
 
@@ -22,22 +18,12 @@ _Positive = -1
 
 def send_positive(cnt):
     print "!!!! %d" % (cnt)
-    if cnt > 5:
-        GPIO.output(_port[1], True)
-    else:
-        GPIO.output(_port[1], False)
-
-    if cnt > 7:
-        GPIO.output(_port[2], True)
-    else:
-        GPIO.output(_port[2], False)
-
-    global _W
-    values = {u"総計":cnt }
-    #sendvalue = [['vote-10', values]]
-    sendvalue = [['cnt-0', values]]
-    print json.dumps(sendvalue,ensure_ascii=False)
-    _W.send(json.dumps(sendvalue,ensure_ascii=False))
+#    global _W
+#    values = {u"総計":cnt }
+#    #sendvalue = [['vote-10', values]]
+#    sendvalue = [['cnt-0', values]]
+#    print json.dumps(sendvalue,ensure_ascii=False)
+#    _W.send(json.dumps(sendvalue,ensure_ascii=False))
 
 
 def cal_positive():
@@ -96,9 +82,6 @@ _Url = _Base+urllib.quote(_Query1.encode('utf-8'))+"?"+urllib.urlencode(_Parm)
 
 if __name__ == '__main__':
     print(_Url)
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(18,GPIO.OUT)
-    GPIO.setup(23,GPIO.OUT)
 
     try:
         global _W
