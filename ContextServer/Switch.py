@@ -36,7 +36,7 @@ def send_positive(cnt):
     values = {u"総計":cnt }
     #sendvalue = [['vote-10', values]]
     sendvalue = [['cnt-0', values]]
-    print json.dumps(sendvalue,ensure_ascii=False)
+    #print json.dumps(sendvalue,ensure_ascii=False)
     _W.send(json.dumps(sendvalue,ensure_ascii=False))
 
 
