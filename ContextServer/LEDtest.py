@@ -24,5 +24,5 @@ if __name__ == '__main__':
     pt = int(sys.argv[1])
     v  = int(sys.argv[2])
     print pt, v
-    
+    #pt = 2‚ª—Î
     GPIO.output(_port[pt], v)

@@ -9,6 +9,7 @@ import json
 
 import RPi.GPIO as GPIO
 
+#pt = 2が緑
 _port = {1:18, 2:23}
 
 #_Base = u"ws://localhost:3030/openmasami/"
