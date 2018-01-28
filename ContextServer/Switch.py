@@ -23,15 +23,12 @@ _Positive = -1
 def send_positive(cnt):
     global _W
     print "!!!! %d" % (cnt)
-    if cnt > 5:
+    if cnt > 4:
         GPIO.output(_port[1], True)
+        GPIO.output(_port[2], False)
     else:
         GPIO.output(_port[1], False)
-
-    if cnt > 7:
         GPIO.output(_port[2], True)
-    else:
-        GPIO.output(_port[2], False)
 
     values = {u"総計":cnt }
     #sendvalue = [['vote-10', values]]
@@ -99,6 +96,9 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(18,GPIO.OUT)
     GPIO.setup(23,GPIO.OUT)
+
+    GPIO.output(_port[1], False)
+    GPIO.output(_port[2], True)
 
     try:
         global _W
