@@ -63,6 +63,9 @@ class ReceiveClient(WebSocketClient):
         if o == "cnt-0":
             print "IGNORE"
             return
+        if o == "cnt-1":
+            print "IGNORE"
+            return
         if o == "_system":
             print "IGNORE"
             return

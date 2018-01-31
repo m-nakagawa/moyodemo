@@ -7,6 +7,22 @@ from tornado import ioloop
 from ws4py.client.threadedclient import WebSocketClient
 import json
 
+import RPi.GPIO as GPIO
+class Dummy(object):
+    BCM=1
+    OUT=2
+    def output(self,x,y):
+        print x, y
+    def setmode(self,x):
+        pass
+    def setup(self,x,y):
+        pass
+
+#GPIO=Dummy()
+
+#pt = 2が緑
+_port = {1:18, 2:23}
+
 #_Base = u"ws://localhost:3030/openmasami/"
 _Base = u"wss://aitc2.dyndns.org/openmasami/"
 
@@ -18,21 +34,18 @@ _Positive = -1
 
 def send_positive(cnt):
     global _W
+    print "!!!! %d" % (cnt)
+    if cnt > 4:
+        GPIO.output(_port[1], True)
+        GPIO.output(_port[2], False)
+    else:
+        GPIO.output(_port[1], False)
+        GPIO.output(_port[2], True)
+
     values = {u"総計":cnt }
     #sendvalue = [['vote-10', values]]
     sendvalue = [['cnt-0', values]]
-    print json.dumps(sendvalue,ensure_ascii=False)
-    _W.send(json.dumps(sendvalue,ensure_ascii=False))
-
-def send_positive2(cnt):
-    global _W
-    if cnt >= 5:
-        values = {u"状態":"ON" }
-    else:
-        values = {u"状態":"OFF" }
-    print values
-    sendvalue = [['cnt-1', values]]
-    print json.dumps(sendvalue,ensure_ascii=False)
+    #print json.dumps(sendvalue,ensure_ascii=False)
     _W.send(json.dumps(sendvalue,ensure_ascii=False))
 
 
@@ -47,7 +60,6 @@ def cal_positive():
         _Positive = cnt
         print "Positive:",cnt
         send_positive(cnt)
-        send_positive2(cnt)
     pass
 
 class ReceiveClient(WebSocketClient):
@@ -59,20 +71,30 @@ class ReceiveClient(WebSocketClient):
         #print "Message", m.data.decode('utf-8')
         j = json.loads(m.data)
         o = j[0]
-        if o == "cnt-0":
-            print "IGNORE"
-            return
         if o == "cnt-1":
+            value = j[1][u'状態']
+            if value == 'ON' or value == 'on':
+                GPIO.output(_port[1], True)
+                GPIO.output(_port[2], False)
+                print 'ON'
+            else:
+                GPIO.output(_port[1], False)
+                GPIO.output(_port[2], True)
+                print 'OFF'
+            return
+        if o == "cnt-0":
+            #print "IGNORE"
             return
         if o == "_system":
-            print "IGNORE"
+            #print "IGNORE"
             return
         point = j[1][u'評価']
         if point != "":
             _Evlist[o] = int(point)
         else:
-            print "xxxx ", o
-        cal_positive()
+            #print "xxxx ", o
+            pass
+        #cal_positive()
 
         #print json.dumps(j)
         #print json.dumps(j,ensure_ascii=False)
@@ -95,6 +117,12 @@ _Url = _Base+urllib.quote(_Query1.encode('utf-8'))+"?"+urllib.urlencode(_Parm)
 
 if __name__ == '__main__':
     print(_Url)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(18,GPIO.OUT)
+    GPIO.setup(23,GPIO.OUT)
+
+    GPIO.output(_port[1], False)
+    GPIO.output(_port[2], True)
 
     try:
         global _W
